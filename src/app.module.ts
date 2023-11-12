@@ -1,7 +1,8 @@
 import { InternalServerErrorException, Module } from '@nestjs/common';
-import { UserResource } from './users/user.resource';
+import { UserResource } from './admin/resources/users/user.resource';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+// import uploadFeature from '@adminjs/upload';
 
 Promise.resolve()
   .then(async () => {
@@ -15,21 +16,8 @@ Promise.resolve()
     throw new InternalServerErrorException(error);
   });
 
-// const DEFAULT_ADMIN = {
-//   email: 'kasra@example.com',
-//   password: 'password',
-// };
-
-// const authenticate = async (email: string, password: string) => {
-//   if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
-//     return Promise.resolve(DEFAULT_ADMIN);
-//   }
-//   return null;
-// };
-
 @Module({
   imports: [
-    // AdminJS version 7 is ESM-only. In order to import it, you have to use dynamic imports.
     import('@adminjs/nestjs').then(async ({ AdminModule }) => {
       const { dark, light, noSidebar } = await import('@adminjs/themes');
       return AdminModule.createAdminAsync({
@@ -47,16 +35,6 @@ Promise.resolve()
                 'https://raw.githubusercontent.com/webpack/media/master/logo/icon-square-small.png',
             },
           },
-          // auth: {
-          //   authenticate,
-          //   cookieName: 'adminjs',
-          //   cookiePassword: 'secret',
-          // },
-          // sessionOptions: {
-          //   resave: true,
-          //   saveUninitialized: true,
-          //   secret: 'secret',
-          // },
         }),
       });
     }),

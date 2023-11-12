@@ -1,4 +1,4 @@
-import { hashPasswordBeforeAction } from '../admin/actions/hashPassword.action';
+import { hashPasswordBeforeAction } from '../../actions/hashPassword.action';
 import { User } from './user.entity';
 import {
   ALL_PROPERTIES,
