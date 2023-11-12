@@ -7,6 +7,7 @@ export class User extends Model<IUser> {
   declare id?: number;
   declare first_name: string;
   declare surname: string;
+  declare bio: string;
   declare contact_number: string;
   declare email: string;
   declare password: string;
@@ -28,6 +29,7 @@ User.init(
     id:             { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
     first_name:     { type: DataTypes.STRING, defaultValue: '' },
     surname:        { type: DataTypes.STRING, defaultValue: '' },
+    bio:            { type: DataTypes.STRING, defaultValue: '' },
     contact_number: { type: DataTypes.STRING, defaultValue: '' },
 
     email:          { type: DataTypes.STRING, allowNull: false },

@@ -14,6 +14,11 @@ export const UserResource = {
       new: { before: [hashPasswordBeforeAction] },
       edit: { before: [hashPasswordBeforeAction] },
     },
+    properties: {
+      bio: {
+        type: 'richtext',
+      },
+    },
     editProperties: EDIT_PROPERTIES,
     showProperties: ALL_PROPERTIES,
     listProperties: COMMON_PROPERTIES,

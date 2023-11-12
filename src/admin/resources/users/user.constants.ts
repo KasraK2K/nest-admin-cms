@@ -4,6 +4,7 @@ export const ALL_PROPERTIES = [
   'id',
   'first_name',
   'surname',
+  'bio',
   'contact_number',
   'email',
   'password',
@@ -28,6 +29,7 @@ export const COMMON_PROPERTIES = _.filter(
 export const EDIT_PROPERTIES = [
   'first_name',
   'surname',
+  'bio',
   'contact_number',
   'email',
   'password',
