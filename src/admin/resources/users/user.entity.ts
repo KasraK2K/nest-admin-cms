@@ -1,10 +1,15 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, Optional } from 'sequelize';
 
 import sequelize from '../../../connections/sqlite.connection';
 import { IUser } from './user.interface';
 
-export class User extends Model<IUser> {
-  declare id?: number;
+type IUserCreation = Optional<
+  Pick<IUser, 'email' | 'password' | 'is_verify'>,
+  'is_verify'
+>;
+
+export class User extends Model<IUser, IUserCreation> {
+  declare id: number;
   declare first_name: string;
   declare surname: string;
   declare bio: string;
@@ -13,10 +18,10 @@ export class User extends Model<IUser> {
   declare password: string;
   declare role: number;
   declare last_token: string;
-  declare is_active: number;
-  declare is_verify: number;
-  declare is_archive: number;
-  declare is_block: number;
+  declare is_active: boolean;
+  declare is_verify: boolean;
+  declare is_archive: boolean;
+  declare is_block: boolean;
   declare last_login_at?: number;
   declare created_at: Date;
   declare updated_at: Date;

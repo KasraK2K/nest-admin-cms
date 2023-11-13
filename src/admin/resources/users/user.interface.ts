@@ -1,5 +1,5 @@
 export interface IUser {
-  id?: number;
+  id: number;
   first_name: string;
   surname: string;
   bio: string;
@@ -8,10 +8,10 @@ export interface IUser {
   password: string;
   role: number;
   last_token: string;
-  is_active: number;
-  is_verify: number;
-  is_archive: number;
-  is_block: number;
+  is_active: boolean;
+  is_verify: boolean;
+  is_archive: boolean;
+  is_block: boolean;
   last_login_at?: number;
   created_at: Date;
   updated_at: Date;
