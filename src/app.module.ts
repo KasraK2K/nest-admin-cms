@@ -2,7 +2,7 @@ import { InternalServerErrorException, Module } from '@nestjs/common';
 import { UserResource } from './admin/resources/users/user.resource';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-// import uploadFeature from '@adminjs/upload';
+import { login } from './admin/resources/users/functions/login.action';
 
 Promise.resolve()
   .then(async () => {
@@ -15,6 +15,12 @@ Promise.resolve()
   .catch((error) => {
     throw new InternalServerErrorException(error);
   });
+
+const authenticate = async (email: string, password: string) => {
+  const user = await login(email, password);
+  if (user) return Promise.resolve({ email, password });
+  return null;
+};
 
 @Module({
   imports: [
@@ -34,6 +40,16 @@ Promise.resolve()
               favicon:
                 'https://raw.githubusercontent.com/webpack/media/master/logo/icon-square-small.png',
             },
+          },
+          auth: {
+            authenticate,
+            cookieName: 'adminjs',
+            cookiePassword: 'secret',
+          },
+          sessionOptions: {
+            resave: true,
+            saveUninitialized: true,
+            secret: 'secret',
           },
         }),
       });
