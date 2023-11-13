@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 
-import sequelize from '../../../database/sqlite.connection';
+import sequelize from '../../../connections/sqlite.connection';
 import { IUser } from './user.interface';
 
 export class User extends Model<IUser> {
