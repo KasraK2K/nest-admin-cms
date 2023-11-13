@@ -23,7 +23,9 @@ export const ALL_PROPERTIES = [
 export const COMMON_PROPERTIES = _.filter(
   ALL_PROPERTIES,
   (item) =>
-    !['last_token', 'password', 'last_login_at', 'archive_at'].includes(item),
+    !['bio', 'last_token', 'password', 'last_login_at', 'archive_at'].includes(
+      item,
+    ),
 );
 
 export const EDIT_PROPERTIES = [

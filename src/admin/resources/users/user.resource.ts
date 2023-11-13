@@ -17,6 +17,11 @@ export const UserResource = {
     properties: {
       bio: {
         type: 'richtext',
+        description:
+          'For each edit, image will remove so be aware to insert your image each time you will edit this sentence.',
+      },
+      password: {
+        type: 'password',
       },
     },
     editProperties: EDIT_PROPERTIES,
